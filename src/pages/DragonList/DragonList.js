@@ -17,9 +17,11 @@ function DragonList() {
     return <span>Error: {error.message}</span>;
   }
 
+  const sorted = data.sort((a, b) => a.name.localeCompare(b.name));
+
   return (
     <div>
-      {data.map((dragon) => (
+      {sorted.map((dragon) => (
         <DragonItem key={dragon.id} dragon={dragon} />
       ))}
     </div>

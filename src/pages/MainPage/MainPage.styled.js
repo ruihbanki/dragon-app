@@ -4,16 +4,16 @@ export default {
   Root: styled.div`
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
+    background: #0e0d15;
   `,
   Header: styled.div`
     flex: 0 60px;
-    background: ${(props) => props.theme.colors.primary};
+    background: #262531;
   `,
   Content: styled.div`
     flex: 1;
     min-height: 1px;
-    overflow: auto;
   `,
   Container: styled.main`
     max-width: 1200px;
