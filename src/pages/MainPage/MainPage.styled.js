@@ -12,6 +12,8 @@ export default {
   `,
   Content: styled.div`
     flex: 1;
+    min-height: 1px;
+    overflow: auto;
   `,
   Container: styled.main`
     max-width: 1200px;
