@@ -2,6 +2,6 @@ import styled from "@emotion/styled";
 
 export default {
   Root: styled.button`
-    background: red;
+    background: ${(props) => props.theme.color.primary};
   `,
 };
