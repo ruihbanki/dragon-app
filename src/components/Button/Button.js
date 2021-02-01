@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import Styled from "./Button.styled";
 
 function Button(props) {
-  const { children, variant, ...other } = props;
+  const { children, variant, color, ...other } = props;
   return (
-    <Styled.Root {...other} variant={variant}>
+    <Styled.Root {...other} variant={variant} color={color}>
       {children}
     </Styled.Root>
   );

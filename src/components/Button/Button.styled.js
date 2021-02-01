@@ -7,7 +7,11 @@ const rootVariant = {
     background: transparent;
   `,
   contained: (props) => `
-    background: ${props.theme.colors.primary};
+    background: ${
+      props.color === "primary"
+        ? props.theme.colors.primary
+        : props.theme.colors.base40
+    };
     border: 0;
     color: #fff;
   `,

@@ -7,6 +7,7 @@ import FormItem from "../../../../components/FormItem";
 import TextInput from "../../../../components/TextInput";
 import Grid from "../../../../components/Grid/Grid";
 import Button from "../../../../components/Button";
+import ButtonGroup from "../../../../components/ButtonGroup";
 
 function DragonForm(props) {
   const { dragon } = props;
@@ -51,10 +52,12 @@ function DragonForm(props) {
           </FormItem>
         </Grid>
         <Grid item span={12}>
-          <Button variant="contained">Cancel</Button>
-          <Button variant="contained" onClick={handleSave}>
-            Save
-          </Button>
+          <ButtonGroup>
+            <Button variant="contained">Cancel</Button>
+            <Button variant="contained" color="primary" onClick={handleSave}>
+              Save
+            </Button>
+          </ButtonGroup>
         </Grid>
       </Grid>
     </Form>
