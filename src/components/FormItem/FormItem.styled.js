@@ -9,7 +9,13 @@ export default {
     display: block;
     margin-bottom: 4px;
     font-size: 13px;
-    color: ${(props) => props.theme.colors.primary};
+    color: ${(props) => props.theme.colors.base80};
   `,
   Content: styled.div``,
+  Error: styled.div`
+    height: 24px;
+    line-height: 24px;
+    color: ${(props) => props.theme.colors.error};
+    font-size: 13px;
+  `,
 };

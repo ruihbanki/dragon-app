@@ -9,7 +9,7 @@ function DragonItem(props) {
 
   const [editing, setEditing] = React.useState(false);
 
-  console.log(dragon);
+  // console.log(dragon);
   return (
     <Styled.Root>
       <Styled.Body>
