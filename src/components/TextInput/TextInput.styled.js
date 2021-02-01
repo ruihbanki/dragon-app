@@ -17,5 +17,8 @@ export default {
           props.error ? props.theme.colors.error : props.theme.colors.primary};
       outline: none;
     }
+    &[disabled] {
+      opacity: 0.4;
+    }
   `,
 };

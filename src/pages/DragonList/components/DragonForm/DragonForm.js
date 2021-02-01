@@ -47,12 +47,8 @@ function DragonForm(props) {
           </FormItem>
         </Grid>
         <Grid item span={2}>
-          <FormItem
-            name="createdAt"
-            label="Data criação"
-            rules={{ required: { value: true, message: "Field required" } }}
-          >
-            <TextInput />
+          <FormItem name="createdAt" label="Data criação">
+            <TextInput disabled />
           </FormItem>
         </Grid>
         <Grid item span={2}>
