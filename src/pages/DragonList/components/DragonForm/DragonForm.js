@@ -20,10 +20,13 @@ function DragonForm(props) {
     defaultValues: dragon,
   });
 
-  const handleSave = React.useCallback(() => {
-    const values = form.getValues();
-    update.mutate({ id: dragon.id, ...values });
-  }, []);
+  const handleSave = React.useCallback(async () => {
+    const valid = await form.trigger();
+    if (valid) {
+      const values = form.getValues();
+      update.mutate({ id: dragon.id, ...values });
+    }
+  }, [form, update]);
 
   React.useEffect(() => {
     if (update.isSuccess) {
@@ -66,7 +69,12 @@ function DragonForm(props) {
             <Button variant="contained" onClick={onCancel}>
               Cancel
             </Button>
-            <Button variant="contained" color="primary" onClick={handleSave}>
+            <Button
+              variant="contained"
+              color="primary"
+              type="submit"
+              onClick={handleSave}
+            >
               Save
             </Button>
           </ButtonGroup>
