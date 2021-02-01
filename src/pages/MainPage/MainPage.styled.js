@@ -9,7 +9,7 @@ export default {
   `,
   Header: styled.div`
     flex: 0 60px;
-    background: #262531;
+    background: ${(props) => props.theme.colors.base20};
   `,
   Content: styled.div`
     flex: 1;

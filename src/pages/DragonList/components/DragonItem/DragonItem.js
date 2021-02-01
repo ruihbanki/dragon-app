@@ -9,9 +9,16 @@ function DragonItem(props) {
 
   const [editing, setEditing] = React.useState(false);
 
-  // console.log(dragon);
+  const handleCancel = React.useCallback(() => {
+    setEditing(false);
+  }, []);
+
+  const handleSave = React.useCallback(() => {
+    setEditing(false);
+  }, []);
+
   return (
-    <Styled.Root>
+    <Styled.Root editing={editing}>
       <Styled.Body>
         <Styled.Name>{dragon.name}</Styled.Name>
         <Styled.Actions>
@@ -21,7 +28,7 @@ function DragonItem(props) {
       </Styled.Body>
       {editing && (
         <Styled.Details>
-          <DragonForm dragon={dragon} />
+          <DragonForm dragon={dragon} onCancel={handleCancel} onSave={handleSave} />
         </Styled.Details>
       )}
     </Styled.Root>

@@ -5,7 +5,8 @@ export default {
     display: flex;
     flex-direction: column;
     margin-top: 12px;
-    background: #1e1a26;
+    background: ${(props) =>
+      props.editing ? props.theme.colors.base20 : props.theme.colors.base10};
     border-radius: 4px;
   `,
   Body: styled.div`
@@ -23,6 +24,7 @@ export default {
   Actions: styled.div``,
   Details: styled.div`
     padding: 12px;
-    border-top: 1px solid #3d3450;
+    border-top: 1px solid ${(props) =>
+      props.editing ? props.theme.colors.base30 : props.theme.colors.base10}};
   `,
 };
