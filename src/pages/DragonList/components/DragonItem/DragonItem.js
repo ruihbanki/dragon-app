@@ -5,7 +5,7 @@ import Button from "../../../../components/Button";
 import DragonForm from "../DragonForm/DragonForm";
 
 function DragonItem(props) {
-  const { dragon } = props;
+  const { dragon, onChange } = props;
 
   const [editing, setEditing] = React.useState(false);
 
@@ -15,7 +15,8 @@ function DragonItem(props) {
 
   const handleSave = React.useCallback(() => {
     setEditing(false);
-  }, []);
+    onChange();
+  }, [onChange]);
 
   return (
     <Styled.Root editing={editing}>
@@ -28,7 +29,11 @@ function DragonItem(props) {
       </Styled.Body>
       {editing && (
         <Styled.Details>
-          <DragonForm dragon={dragon} onCancel={handleCancel} onSave={handleSave} />
+          <DragonForm
+            dragon={dragon}
+            onCancel={handleCancel}
+            onSave={handleSave}
+          />
         </Styled.Details>
       )}
     </Styled.Root>

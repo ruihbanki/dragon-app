@@ -12,11 +12,9 @@ import ButtonGroup from "../../../../components/ButtonGroup";
 import { updateDragon } from "../../../../services/dragonServices";
 
 function DragonForm(props) {
-  const { dragon, onCancel } = props;
+  const { dragon, onCancel, onSave } = props;
 
   const update = useMutation(updateDragon);
-
-  console.log(dragon);
 
   const form = useForm({
     defaultValues: dragon,
@@ -26,6 +24,12 @@ function DragonForm(props) {
     const values = form.getValues();
     update.mutate({ id: dragon.id, ...values });
   }, []);
+
+  React.useEffect(() => {
+    if (update.isSuccess) {
+      onSave();
+    }
+  }, [update, onSave]);
 
   return (
     <Form form={form}>

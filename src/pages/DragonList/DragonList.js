@@ -4,10 +4,14 @@ import { fetchDragons } from "../../services/dragonServices";
 import DragonItem from "./components/DragonItem";
 
 function DragonList() {
-  const { isLoading, isError, error, data } = useQuery(
+  const { isLoading, isError, error, data, refetch } = useQuery(
     "dragonList",
     fetchDragons
   );
+
+  const handleChange = React.useCallback(() => {
+    refetch();
+  }, [refetch]);
 
   if (isLoading) {
     return <span>Loading...</span>;
@@ -22,7 +26,7 @@ function DragonList() {
   return (
     <div>
       {sorted.map((dragon) => (
-        <DragonItem key={dragon.id} dragon={dragon} />
+        <DragonItem key={dragon.id} dragon={dragon} onChange={handleChange} />
       ))}
     </div>
   );
