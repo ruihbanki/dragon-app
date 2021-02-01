@@ -1,6 +1,7 @@
 import React from "react";
-import { useQuery } from "react-query";
-import { fetchDragons } from "../../services/dragonServices";
+import { useMutation, useQuery } from "react-query";
+import Alert from "../../components/Alert";
+import { fetchDragons, deleteDragon } from "../../services/dragonServices";
 import DragonItem from "./components/DragonItem";
 
 function DragonList() {
@@ -9,9 +10,26 @@ function DragonList() {
     fetchDragons
   );
 
+  const update = useMutation(deleteDragon);
+
+  const [dragon, setDragon] = React.useState(null);
+
+  const handleDelete = React.useCallback((dragon) => {
+    setDragon(dragon);
+  }, []);
+
   const handleChange = React.useCallback(() => {
     refetch();
   }, [refetch]);
+
+  const handleDeleteCancel = React.useCallback(() => {
+    setDragon(null);
+  }, []);
+
+  const handleDeleteConfirm = React.useCallback(() => {
+    update.mutate(dragon.id);
+    setDragon(null);
+  }, [dragon]);
 
   if (isLoading) {
     return <span>Loading...</span>;
@@ -26,8 +44,22 @@ function DragonList() {
   return (
     <div>
       {sorted.map((dragon) => (
-        <DragonItem key={dragon.id} dragon={dragon} onChange={handleChange} />
+        <DragonItem
+          key={dragon.id}
+          dragon={dragon}
+          onChange={handleChange}
+          onDelete={handleDelete}
+        />
       ))}
+      <Alert
+        visible={Boolean(dragon)}
+        title="Deseja realmente excluir?"
+        message="Essa operação não pode ser revertida."
+        buttons={[
+          { text: "Cancelar", onClick: handleDeleteCancel },
+          { text: "Excluir", color: "primary", onClick: handleDeleteConfirm },
+        ]}
+      />
     </div>
   );
 }

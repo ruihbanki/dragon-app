@@ -13,3 +13,12 @@ export function updateDragon(data) {
     body: JSON.stringify(data),
   }).then((res) => res.json());
 }
+
+export function deleteDragon(id) {
+  return fetch(`${API_URL}/dragon/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }).then((res) => res.json());
+}

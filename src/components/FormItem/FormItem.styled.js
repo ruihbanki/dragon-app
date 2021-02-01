@@ -7,7 +7,7 @@ export default {
   `,
   Label: styled.label`
     display: block;
-    margin-bottom: 4px;
+    margin-bottom: 8px;
     font-size: 13px;
     color: ${(props) => props.theme.colors.base80};
   `,
