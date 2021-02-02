@@ -9,11 +9,17 @@ const Styled = {
   `,
   Header: styled.div`
     flex: 0 60px;
+    position: fixed;
+    width: 100%;
+    height: 60px;
+    top: 0;
+    z-index: 100;
     background: ${(props) => props.theme.colors.base20};
   `,
   Content: styled.div`
     flex: 1;
     min-height: 1px;
+    padding-top: 60px;
   `,
   Container: styled.main`
     max-width: 1200px;

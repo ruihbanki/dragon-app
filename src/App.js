@@ -5,6 +5,9 @@ import MainPage from "./pages/MainPage";
 function App() {
   return (
     <Switch>
+      <Route path="/" exact>
+        <LoginPage />
+      </Route>
       <Route path="/login">
         <LoginPage />
       </Route>
