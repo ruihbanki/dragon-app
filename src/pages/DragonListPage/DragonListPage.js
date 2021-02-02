@@ -1,9 +1,10 @@
 import React from "react";
 import { useMutation, useQuery } from "react-query";
 import Alert from "../../components/Alert";
-import { fetchDragons, deleteDragon } from "../../services/dragonServices";
 import DragonItem from "./components/DragonItem";
 import Styled from "./DragonListPage.styled";
+import { fetchDragons, deleteDragon } from "../../services/dragonServices";
+import DragonForm from "../../containers/DragonForm";
 
 function DragonListPage() {
   const { isLoading, isError, error, data, refetch } = useQuery(
@@ -15,13 +16,24 @@ function DragonListPage() {
 
   const [dragon, setDragon] = React.useState(null);
 
-  const handleDelete = React.useCallback((dragon) => {
-    setDragon(dragon);
-  }, []);
+  const [adding, setAdding] = React.useState(false);
 
   const handleChange = React.useCallback(() => {
     refetch();
   }, [refetch]);
+
+  const handleSave = React.useCallback(() => {
+    setAdding(false);
+    refetch();
+  }, [refetch]);
+
+  const handleAdd = React.useCallback(() => {
+    setAdding(true);
+  }, []);
+
+  const handleDelete = React.useCallback((dragon) => {
+    setDragon(dragon);
+  }, []);
 
   const handleDeleteCancel = React.useCallback(() => {
     setDragon(null);
@@ -46,9 +58,16 @@ function DragonListPage() {
     <Styled.Root>
       <Styled.Header>
         <Styled.Title>Dragons</Styled.Title>
-        <Styled.Add title="Adicionar">+</Styled.Add>
+        <Styled.Add title="Adicionar" onClick={handleAdd}>
+          +
+        </Styled.Add>
       </Styled.Header>
       <Styled.Content>
+        {adding && (
+          <Styled.NewArea>
+            <DragonForm dragon={{}} onSave={handleSave} />
+          </Styled.NewArea>
+        )}
         {sorted.map((dragon) => (
           <DragonItem
             key={dragon.id}

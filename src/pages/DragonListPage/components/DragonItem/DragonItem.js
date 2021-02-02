@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Styled from "./DragonItem.styled";
 import Button from "../../../../components/Button";
-import DragonForm from "../DragonForm/DragonForm";
+import DragonForm from "../../../../containers/DragonForm";
 
 function DragonItem(props) {
   const { dragon, onChange, onDelete } = props;

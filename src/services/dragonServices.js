@@ -14,6 +14,16 @@ export function updateDragon(data) {
   }).then((res) => res.json());
 }
 
+export function insertDragon(data) {
+  return fetch(`${API_URL}/dragon`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  }).then((res) => res.json());
+}
+
 export function deleteDragon(id) {
   return fetch(`${API_URL}/dragon/${id}`, {
     method: "DELETE",

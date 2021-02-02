@@ -3,18 +3,20 @@ import PropTypes from "prop-types";
 import { useForm } from "react-hook-form";
 import { useMutation } from "react-query";
 
-import Form from "../../../../components/Form";
-import FormItem from "../../../../components/FormItem";
-import TextInput from "../../../../components/TextInput";
-import Grid from "../../../../components/Grid/Grid";
-import Button from "../../../../components/Button";
-import ButtonGroup from "../../../../components/ButtonGroup";
-import { updateDragon } from "../../../../services/dragonServices";
+import Form from "../../components/Form";
+import FormItem from "../../components/FormItem";
+import TextInput from "../../components/TextInput";
+import Grid from "../../components/Grid/Grid";
+import Button from "../../components/Button";
+import ButtonGroup from "../../components/ButtonGroup";
+import { insertDragon, updateDragon } from "../../services/dragonServices";
 
 function DragonForm(props) {
   const { dragon, onCancel, onSave } = props;
 
   const update = useMutation(updateDragon);
+
+  const insert = useMutation(insertDragon);
 
   const form = useForm({
     defaultValues: dragon,
@@ -24,15 +26,19 @@ function DragonForm(props) {
     const valid = await form.trigger();
     if (valid) {
       const values = form.getValues();
-      update.mutate({ id: dragon.id, ...values });
+      if (dragon.id) {
+        update.mutate({ id: dragon.id, ...values });
+      } else {
+        insert.mutate(values);
+      }
     }
-  }, [form, update]);
+  }, [form, update, insert, dragon]);
 
   React.useEffect(() => {
-    if (update.isSuccess) {
+    if (update.isSuccess || insert.isSuccess) {
       onSave();
     }
-  }, [update, onSave]);
+  }, [update, insert, onSave]);
 
   return (
     <Form form={form}>

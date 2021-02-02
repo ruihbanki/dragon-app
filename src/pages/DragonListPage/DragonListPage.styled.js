@@ -30,6 +30,11 @@ const Styled = {
       filter: brightness(1.2);
     }
   `,
+  NewArea: styled.div`
+    background: ${(props) => props.theme.colors.base20};
+    border-radius: 4px;
+    padding: 16px;
+  `,
   Content: styled.div`
     flex: 1;
     min-height: 1px;
