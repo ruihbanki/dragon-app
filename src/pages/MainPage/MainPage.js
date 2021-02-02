@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Switch, useLocation, useRouteMatch } from "react-router";
-import DragonList from "../DragonList/DragonList";
+import DragonListPage from "../DragonListPage";
 import Styled from "./MainPage.styled";
 
 function MainPage() {
@@ -13,7 +13,7 @@ function MainPage() {
         <Styled.Container>
           <Switch>
             <Route path={`${path}/dragon-list`}>
-              <DragonList />
+              <DragonListPage />
             </Route>
           </Switch>
         </Styled.Container>

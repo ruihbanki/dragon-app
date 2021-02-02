@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export default {
+const Styled = {
   Root: styled.div`
     display: flex;
     justify-content: center;
@@ -41,3 +41,5 @@ export default {
     padding: 12px;
   `,
 };
+
+export default Styled;

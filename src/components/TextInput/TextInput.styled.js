@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export default {
+const Styled = {
   Root: styled.input`
     width: 100%;
     height: 32px;
@@ -22,3 +22,5 @@ export default {
     }
   `,
 };
+
+export default Styled;

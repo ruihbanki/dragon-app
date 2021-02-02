@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export default {
+const Styled = {
   Root: styled.div`
     display: flex;
     flex-direction: column;
@@ -19,3 +19,5 @@ export default {
     font-size: 13px;
   `,
 };
+
+export default Styled;

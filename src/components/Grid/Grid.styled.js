@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export default {
+const Styled = {
   Root: styled.div`
     display: ${(props) => (props.container ? "grid" : undefined)};
     grid-template-columns: repeat(12, 1fr);
@@ -9,3 +9,5 @@ export default {
     grid-column: ${(props) => (props.item ? `${props.span} span` : undefined)};
   `,
 };
+
+export default Styled;

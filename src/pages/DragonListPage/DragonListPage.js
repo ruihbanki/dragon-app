@@ -3,8 +3,9 @@ import { useMutation, useQuery } from "react-query";
 import Alert from "../../components/Alert";
 import { fetchDragons, deleteDragon } from "../../services/dragonServices";
 import DragonItem from "./components/DragonItem";
+import Styled from "./DragonListPage.styled";
 
-function DragonList() {
+function DragonListPage() {
   const { isLoading, isError, error, data, refetch } = useQuery(
     "dragonList",
     fetchDragons
@@ -42,7 +43,7 @@ function DragonList() {
   const sorted = data.sort((a, b) => a.name.localeCompare(b.name));
 
   return (
-    <div>
+    <Styled.Root>
       {sorted.map((dragon) => (
         <DragonItem
           key={dragon.id}
@@ -60,8 +61,8 @@ function DragonList() {
           { text: "Excluir", color: "primary", onClick: handleDeleteConfirm },
         ]}
       />
-    </div>
+    </Styled.Root>
   );
 }
 
-export default React.memo(DragonList);
+export default React.memo(DragonListPage);

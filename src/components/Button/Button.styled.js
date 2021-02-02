@@ -17,10 +17,12 @@ const rootVariant = {
   `,
 };
 
-export default {
+const Styled = {
   Root: styled.button`
     height: 36px;
     padding: 8px 16px;
     ${(props) => rootVariant[props.variant](props)}
   `,
 };
+
+export default Styled;
