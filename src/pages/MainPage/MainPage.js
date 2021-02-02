@@ -8,7 +8,7 @@ function MainPage() {
 
   return (
     <Styled.Root>
-      <Styled.Header>header</Styled.Header>
+      <Styled.Header></Styled.Header>
       <Styled.Content>
         <Styled.Container>
           <Switch>

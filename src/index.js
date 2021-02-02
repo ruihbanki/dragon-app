@@ -7,6 +7,7 @@ import { ThemeProvider } from "@emotion/react";
 import { BrowserRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 
+import MatchMediaProvider from "./components/MatchMedia/MatchMediaProvider";
 import theme from "./config/theme";
 
 const queryClient = new QueryClient();
@@ -16,7 +17,15 @@ ReactDOM.render(
     <BrowserRouter>
       <QueryClientProvider client={queryClient}>
         <ThemeProvider theme={theme}>
-          <App />
+          <MatchMediaProvider
+            breakpoints={{
+              sm: "screen",
+              md: "screen and (min-width: 640px)",
+              lg: "screen and (min-width: 1024px)",
+            }}
+          >
+            <App />
+          </MatchMediaProvider>
         </ThemeProvider>
       </QueryClientProvider>
     </BrowserRouter>

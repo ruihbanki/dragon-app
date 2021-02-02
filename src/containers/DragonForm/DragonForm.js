@@ -10,9 +10,12 @@ import Grid from "../../components/Grid/Grid";
 import Button from "../../components/Button";
 import ButtonGroup from "../../components/ButtonGroup";
 import { insertDragon, updateDragon } from "../../services/dragonServices";
+import useMatchMedia from "../../components/MatchMedia/useMatchMedia";
 
 function DragonForm(props) {
   const { dragon, onCancel, onSave } = props;
+
+  const { match } = useMatchMedia();
 
   const update = useMutation(updateDragon);
 
@@ -43,7 +46,7 @@ function DragonForm(props) {
   return (
     <Form form={form}>
       <Grid container columnGap="20px" rowGap="4px">
-        <Grid item span={4}>
+        <Grid item span={match({ sm: 12, md: 6, lg: 4 })}>
           <FormItem
             name="name"
             label="Name"
@@ -52,12 +55,12 @@ function DragonForm(props) {
             <TextInput />
           </FormItem>
         </Grid>
-        <Grid item span={2}>
+        <Grid item span={match({ sm: 12, md: 6, lg: 2 })}>
           <FormItem name="createdAt" label="Data criação">
             <TextInput disabled />
           </FormItem>
         </Grid>
-        <Grid item span={2}>
+        <Grid item span={match({ sm: 12, md: 6, lg: 2 })}>
           <FormItem
             name="type"
             label="Tipo"
