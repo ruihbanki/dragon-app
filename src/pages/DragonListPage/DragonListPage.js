@@ -27,6 +27,10 @@ function DragonListPage() {
     refetch();
   }, [refetch]);
 
+  const handleCancel = React.useCallback(() => {
+    setAdding(false);
+  }, []);
+
   const handleAdd = React.useCallback(() => {
     setAdding(true);
   }, []);
@@ -71,7 +75,11 @@ function DragonListPage() {
       <Styled.Content>
         {adding && (
           <Styled.NewArea>
-            <DragonForm dragon={{}} onSave={handleSave} />
+            <DragonForm
+              dragon={{}}
+              onSave={handleSave}
+              onCancel={handleCancel}
+            />
           </Styled.NewArea>
         )}
         {sorted.map((dragon) => (

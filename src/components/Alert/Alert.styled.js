@@ -7,6 +7,7 @@ const Styled = {
     align-items: center;
     position: fixed;
     inset: 0;
+    padding: 12px;
     z-index: 1000;
     ::before {
       content: "";

@@ -23,7 +23,7 @@ export default {
   `,
   Actions: styled.div``,
   Details: styled.div`
-    padding: 12px;
+    padding: 24px;
     border-top: 1px solid ${(props) =>
       props.editing ? props.theme.colors.base30 : props.theme.colors.base10}};
   `,
