@@ -12,7 +12,7 @@ function DragonListPage() {
     fetchDragons
   );
 
-  const update = useMutation(deleteDragon);
+  const remove = useMutation(deleteDragon);
 
   const [dragon, setDragon] = React.useState(null);
 
@@ -40,9 +40,15 @@ function DragonListPage() {
   }, []);
 
   const handleDeleteConfirm = React.useCallback(() => {
-    update.mutate(dragon.id);
-    setDragon(null);
-  }, [dragon]);
+    remove.mutate(dragon.id);
+  }, [dragon, refetch, remove]);
+
+  React.useEffect(() => {
+    if (remove.isSuccess) {
+      setDragon(null);
+      refetch();
+    }
+  }, [remove.isSuccess, refetch]);
 
   if (isLoading) {
     return <span>Loading...</span>;
