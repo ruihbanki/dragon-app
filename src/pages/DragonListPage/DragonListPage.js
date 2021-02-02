@@ -44,23 +44,29 @@ function DragonListPage() {
 
   return (
     <Styled.Root>
-      {sorted.map((dragon) => (
-        <DragonItem
-          key={dragon.id}
-          dragon={dragon}
-          onChange={handleChange}
-          onDelete={handleDelete}
+      <Styled.Header>
+        <Styled.Title>Dragons</Styled.Title>
+        <Styled.Add title="Adicionar">+</Styled.Add>
+      </Styled.Header>
+      <Styled.Content>
+        {sorted.map((dragon) => (
+          <DragonItem
+            key={dragon.id}
+            dragon={dragon}
+            onChange={handleChange}
+            onDelete={handleDelete}
+          />
+        ))}
+        <Alert
+          visible={Boolean(dragon)}
+          title="Deseja realmente excluir?"
+          message="Essa operação não pode ser revertida."
+          buttons={[
+            { text: "Cancelar", onClick: handleDeleteCancel },
+            { text: "Excluir", color: "primary", onClick: handleDeleteConfirm },
+          ]}
         />
-      ))}
-      <Alert
-        visible={Boolean(dragon)}
-        title="Deseja realmente excluir?"
-        message="Essa operação não pode ser revertida."
-        buttons={[
-          { text: "Cancelar", onClick: handleDeleteCancel },
-          { text: "Excluir", color: "primary", onClick: handleDeleteConfirm },
-        ]}
-      />
+      </Styled.Content>
     </Styled.Root>
   );
 }

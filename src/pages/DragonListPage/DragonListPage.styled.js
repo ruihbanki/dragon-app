@@ -2,23 +2,37 @@ import styled from "@emotion/styled";
 
 const Styled = {
   Root: styled.div`
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background: #0e0d15;
+    position: relative;
   `,
   Header: styled.div`
-    flex: 0 60px;
-    background: ${(props) => props.theme.colors.base20};
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+  `,
+  Title: styled.h1`
+    font-size: 48px;
+    font-weight: 300;
+    margin: 0;
+    color: ${(props) => props.theme.colors.primary};
+  `,
+  Add: styled.button`
+    width: 40px;
+    height: 40px;
+    margin-left: 40px;
+    line-height: 40px;
+    border-radius: 999px;
+    background: ${(props) => props.theme.colors.primary};
+    color: #fff;
+    text-align: center;
+    border: 0;
+    font-size: 24px;
+    :hover {
+      filter: brightness(1.2);
+    }
   `,
   Content: styled.div`
     flex: 1;
     min-height: 1px;
-  `,
-  Container: styled.main`
-    max-width: 1200px;
-    margin: auto;
-    padding: 20px;
   `,
 };
 
